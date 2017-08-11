@@ -1,23 +1,101 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+﻿<script>
+  $(document).ready(function () {
+    $(window).on('load scroll', function () {
+      var scrolled = $(this).scrollTop();
+      $('#title').css({
+        'transform': 'translate3d(0, ' + -(scrolled * 0.2) + 'px, 0)', // parallax (20% scroll rate)
+        'opacity': 1 - scrolled / 400 // fade out at 400px from top
+      });
+      $('#hero-vid').css('transform', 'translate3d(0, ' + -(scrolled * 0.25) + 'px, 0)'); // parallax (25% scroll rate)
+    });
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+    // video controls
+    $('#pause').on('click', function () {
+      var video = $('#hero-vid').get(0);
+      var icons = $('#state > span');
+      $('#overlay').toggleClass('fade');
+      if (video.paused) {
+        video.play();
+        icons.removeClass('fa-play').addClass('fa-pause');
+      } else {
+        video.pause();
+        icons.removeClass('fa-pause').addClass('fa-play');
+      }
+    });
+  });
+</script>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+<div class="row">
+  <div class="parallax-container">
+    <div class="parallax">
+      <video class="visible-desktop" id="hero-vid" poster="http://www.markhillard.com/sandbox/media/polina.jpg" autoplay loop muted>
+        <source type="video/webm" src="http://www.markhillard.com/sandbox/media/polina.webm"></source>
+        <source type="video/mp4" src="http://www.markhillard.com/sandbox/media/polina.mp4"></source>
+      </video>
+    </div>
+  </div>
+  <div class="row-verde">
+    <div class="container text-center">
+      <br />
+      <br />
+      <br />
+      <h2>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam in lobortis conclusionemque nam.</h2>
+      <br />
+      <button class="btn btn-lg btn-primary btn-banner">Conoce más sobre Spraytec</button>
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
+  <div class="text-center">
+    <div class="col-xs-12 col-lg-6 row-verde-oscuro">
+      <div style="padding: 40px 50px 50px 50px">
+        <ui-carousel slides="Wrapper_slider1">
+          <carousel-item>
+            <a href="#"><img class="img-responsive" src="http://via.placeholder.com/250x300/3FC380/ffffff"></a>
+          </carousel-item>
+        </ui-carousel>
+      </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    </div>
+    <div class="col-xs-12 col-lg-6 row-blanco">
+      <h2 class="texto-verde">Fulltec</h2>
+      <p class="text-left" style="font-weight:normal">Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani at, mea te audire phaedrum, mel et nibh aliquam. </p>
+      <ul class="text-left" style="font-weight:normal">
+        <li style="padding-left:50px; line-height:40px"><i>°</i> Ad sea dolor accusata consequuntur.</li>
+        <li style="padding-left:50px; line-height:40px"><i>°</i> Sit facete convenire reprehendunt et</li>
+        <li style="padding-left:50px; line-height:40px"><i>°</i> Fabulas dolorem ei has, quem molestie persequeris et sit</li>
+      </ul>
+      <br />
+      <br />
+      <button class="btn btn-lg btn-primary btn-banner">Todos los productos</button>
+    </div>
+
+    <div>
+      <img class="img-responsive" src="http://placehold.it/1920x400" />
+    </div>
+    <div class="row-verde">
+      <div class="container text-center">
+        <br />
+        <br />
+        <br />
+        <h2>Contactanos y recibe más información.</h2>
+        <br />
+        <div class="col-xs-12">
+          <div class="col-xs-12 col-lg-4">
+            <input type="text" class="form-control" placeholder="Correo electrónico">
+          </div>
+          <div class="col-xs-12 col-lg-4">
+            <input type="text" class="form-control" placeholder="Nombre completo">
+          </div>
+          <div class="col-xs-12 col-lg-4">
+            <button class="btn btn-lg btn-primary btn-banner col-xs-12">Enviar</button>
+          </div>
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

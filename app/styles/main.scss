@@ -1,14 +1,7 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+﻿$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 
 body {
   padding: 0;
@@ -67,25 +60,223 @@ body {
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+/*Video Overlay*/
+#overlay {
+  background-color: rgba(0,0,0,.65);
+  height: 100%;
+  left: 0;
+  position: relative;
+  top: 0;
+  transition: background-color 300ms ease;
+  width: 100%;
+}
+
+.fade {
+  background-color: rgba(0,0,0,.85) !important;
+}
+
+
+/* Hero Video + Fallback */
+
+#hero-vid {
+  backface-visibility: hidden;
+  background: url("http://www.markhillard.com/sandbox/media/polina.jpg") no-repeat scroll 0 0 #000;
+  background-size: cover;
+  bottom: 0;
+  height: auto;
+  min-height: 100%;
+  min-width: 100%;
+  perspective: 1000;
+  position: fixed;
+  right: 0;
+  width: auto;
+  z-index: -1;
+}
+
+#hero-pic {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+#state {
+  background-color: rgba(0,0,0,.5);
+  bottom: 0;
+  cursor: pointer;
+  font-size: 2.25em;
+  left: 0;
+  padding: 1.5rem 2.5rem;
+  position: absolute;
+  width: 31px;
+}
+
+
+/* Content Styles */
+
+#title {
+  backface-visibility: hidden;
+  left: 0;
+  perspective: 1000;
+  position: fixed;
+  width: 100%;
+}
+
+#title h1 {
+  background-color: rgba(0,0,0,.5);
+  font-family: "Poiret One", sans-serif;
+  font-size: 2.5em;
+  padding: .5em .725em;
+}
+
+#content {
+  background-color: #151515;
+  padding: 2em;
+  position: relative;
+  z-index: 1;
+}
+
+#content p {
+  font-size: 1.25em;
+  letter-spacing: .02em;
+  margin-bottom: 1.3em;
+}
+
+
+/* Media Queries */
+
+@media only screen and (max-width:768px) {
+  #overlay {
+    height: auto;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+}
+
+
+/* Visibility Helpers */
+
+@media only screen and (min-width:769px) {
+  .visible-mobile, .visible-tablet, .hidden-desktop {
+    display: none !important;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+}
+
+@media only screen and (min-width:480px) and (max-width:768px) {
+  .visible-mobile, .hidden-tablet, .visible-desktop {
+    display: none !important;
   }
+}
+
+@media only screen and (max-width:479px) {
+  .hidden-mobile, .visible-tablet, .visible-desktop {
+    display: none !important;
+  }
+}
+
+footer {
+  position: relative;
+  line-height: 10px;
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  background: #fff;
+  top: 50px;
+  left: 0px;
+  z-index: 10;
+}
+
+.row-verde {
+  padding: 10px 10px 10px 10px;
+  background-color: #3FC380;
+  color:#fff;
+  font-weight:bold;
+  letter-spacing: 1px;
+  line-height:10px;
+}
+
+.row-verde-oscuro {
+  padding: 10px 10px 10px 10px;
+  background-color: #95C154;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 10px;
+  height:400px;
+}
+
+.row-gris {
+  padding: 10px 10px 10px 10px;
+  background-color: #F0F0F0;
+  color: #3FC380;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 10px;
+}
+
+.row-blanco {
+  padding: 10px 10px 10px 10px;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  height: 400px;
+  padding: 15px 30px 15px 30px;
+}
+
+.btn-banner {
+  border-radius: 0;
+  background-color: #4A4A4A;
+  border-color: #4A4A4A;
+  color: #FFFFFF;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  padding: 10px 20px 10px 20px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 0;
+}
+
+.btn-md, .btn-group-md > .btn {
+  padding: 5px 8px;
+  font-size: 16px;
+  line-height: 1.3333333;
+  border-radius: 1px;
+}
+
+.btn-xs, .btn-group-xs > .btn {
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 1px;
+}
+
+.margin-bottom {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-transform: none;
+}
+
+.texto-verde {
+  color: #3FC380;
+  font-weight:bold;
 }

@@ -1,94 +1,122 @@
-<!doctype html>
+﻿<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="spraytecApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+  <meta name="author" content="http://www.aper.net">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+  <title>Spraytec</title>
+  <base href="/">
+  <meta name="description" content="Spraytec">
 
-            <a class="navbar-brand" href="#/">spraytec</a>
-          </div>
+  <meta property="og:site_name" content="aper.net">
+  <meta property="og:url" content="http://www.aper.net">
+  <meta property="og:image" content="http://www.feedmusic.com/images/logo.png">
+  <meta property="og:locale" content="en_EN">
+  <meta property="og:description" content="Spraytec">
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+  <link rel="shortcut icon" href="">
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-carousel/dist/ui-carousel.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="efectos/style.css">
+  <link href="styles/flag/flags.css" rel="stylesheet" />
+  <script src="efectos/modernizr.js"></script>
+  <!-- endbuild -->
+
+</head>
+
+<body ng-app="spraytecApp">
+  <header>
+    <a href="#" style="padding-left:46px">
+      <img src="images/spraytec-logo2.png" />
+    </a>
+
+    <a href="http://www.feedmusic.com/#" class="toggle-button">
+      <span class="lines"></span>
+    </a>
+
+    <div class="main-menu" style="opacity: 0; display: none;">
+      <div class="vertical-container">
+        <div class="vertical-content">
+          <div class="container">
+            <ul>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+                <i class="flag flag-us"></i>
+                <i class="flag flag-ar"></i>
+                <i class="flag flag-br"></i>
+              </li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#">Nosotros</a></li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#">Productos</a></li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#">Intranet</a></li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#">Ensayos</a></li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#">Contacto</a></li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
+  </header>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+  <div class="loader" style="display: none; opacity: 0; transform: matrix(1.6, 0, 0, 1.6, 0, 0);"></div>
 
+  <div class="container-fluid" style="padding-top: 102px;">
+    <div ui-view></div>
+  </div>
+  <footer>
+    footer
+  </footer>
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+    !function (A, n, g, u, l, a, r) {
+      A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+        r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+  </script>
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/materialize/dist/js/materialize.js"></script>
+  <script src="bower_components/angular-ui-carousel/dist/ui-carousel.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+  <script src="efectos/vendors.min.js"></script>
+  <script src="efectos/app.min.js"></script>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
 </body>
 </html>
