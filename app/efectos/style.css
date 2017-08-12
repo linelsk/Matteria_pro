@@ -735,6 +735,7 @@ header {
   left: 0;
   width: 100%;
   background-color: #fff;
+  box-shadow: 0 2px 2px #888888;
 }
 
   header .logo, header .logo:after, header .logo:before, header .toggle-button {

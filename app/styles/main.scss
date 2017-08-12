@@ -189,8 +189,6 @@ footer {
   background-color: #3FC380;
   color:#fff;
   font-weight:bold;
-  letter-spacing: 1px;
-  line-height:10px;
 }
 
 .row-verde-oscuro {
@@ -204,16 +202,14 @@ footer {
 }
 
 .row-gris {
-  padding: 10px 10px 10px 10px;
+  height: 300px;
+  padding: 25px 30px 15px 30px;
   background-color: #F0F0F0;
   color: #3FC380;
   font-weight: bold;
-  letter-spacing: 1px;
-  line-height: 10px;
 }
 
 .row-blanco {
-  padding: 10px 10px 10px 10px;
   background-color: #fff;
   color: #000;
   font-weight: bold;
@@ -252,7 +248,7 @@ footer {
 .margin-bottom {
   display: block;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .btn {
@@ -279,4 +275,38 @@ footer {
 .texto-verde {
   color: #3FC380;
   font-weight:bold;
+}
+
+.circ-verde {
+  color: #fff;
+  background-color: #3FC380;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  text-align:center;
+  display:table;
+}
+
+.circ-verde > h2 {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.circ-verde:hover {
+  color: #fff;
+  background-color: #9B9B9B;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  display: table;
+}
+
+.circ-verde:hover > p {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: normal;
 }

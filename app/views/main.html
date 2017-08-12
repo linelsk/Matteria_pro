@@ -1,5 +1,8 @@
-﻿<script>
+﻿<script src="efectos/scrolling/skrollr.js"></script>
+<script>
+
   $(document).ready(function () {
+    var s = skrollr.init();
     $(window).on('load scroll', function () {
       var scrolled = $(this).scrollTop();
       $('#title').css({
@@ -24,7 +27,18 @@
     });
   });
 </script>
+<style>
+  div.yeah {
+    color: #333;
+    font-size: 8em;
+    letter-spacing: 20px;
+    margin-top: 500px;
+  }
 
+    div.yeah p {
+      display: inline-block;
+    }
+</style>
 <div class="row">
   <div class="parallax-container">
     <div class="parallax">
@@ -34,19 +48,23 @@
       </video>
     </div>
   </div>
+
   <div class="row-verde">
     <div class="container text-center">
       <br />
       <br />
       <br />
-      <h2>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam in lobortis conclusionemque nam.</h2>
       <br />
-      <button class="btn btn-lg btn-primary btn-banner">Conoce más sobre Spraytec</button>
+      <br />
+      <h2 data-parallax='{"y": -80, "duration": 200}'>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam in lobortis conclusionemque nam.</h2>
+      <br />
+      <button data-parallax='{"y": -80, "duration": 100}' class="btn btn-lg btn-primary btn-banner">Conoce más sobre Spraytec</button>
       <br />
       <br />
       <br />
     </div>
   </div>
+
   <div class="text-center">
     <div class="col-xs-12 col-lg-6 row-verde-oscuro">
       <div style="padding: 40px 50px 50px 50px">
@@ -70,32 +88,47 @@
       <br />
       <button class="btn btn-lg btn-primary btn-banner">Todos los productos</button>
     </div>
-
-    <div>
-      <img class="img-responsive" src="http://placehold.it/1920x400" />
+  </div>
+  <div class="text-center">
+    <div class="col-xs-12 col-lg-7 row-gris">
+      <br />
+      <br />
+      <br />
+      <h2 data-parallax='{"y": -100, "duration": 200}'><br />Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei</h2>
     </div>
-    <div class="row-verde">
-      <div class="container text-center">
-        <br />
-        <br />
-        <br />
-        <h2>Contactanos y recibe más información.</h2>
-        <br />
-        <div class="col-xs-12">
-          <div class="col-xs-12 col-lg-4">
-            <input type="text" class="form-control" placeholder="Correo electrónico">
-          </div>
-          <div class="col-xs-12 col-lg-4">
-            <input type="text" class="form-control" placeholder="Nombre completo">
-          </div>
-          <div class="col-xs-12 col-lg-4">
-            <button class="btn btn-lg btn-primary btn-banner col-xs-12">Enviar</button>
-          </div>
-          <br />
-          <br />
-          <br />
-        </div>
+    <div class="col-xs-12 col-lg-5 row-gris">
+      <div class="col-xs-12">
+        <img data-parallax='{"rotateX":100}' class="img-responsive" src="http://placehold.it/350x250" />
       </div>
     </div>
   </div>
+  <div class="row-verde"><small style="color:#3FC380">.</small></div>
+  <div class="row-verde" style="padding-bottom:70px;">
+    <div class="container text-center">
+      <h2>Contactanos y recibe más información.</h2>
+      <br />
+      <div class="col-xs-12">
+        <div class="col-xs-12 col-lg-4">
+          <input type="text" class="form-control" placeholder="Correo electrónico">
+        </div>
+        <div class="col-xs-12 col-lg-4">
+          <input type="text" class="form-control" placeholder="Nombre completo">
+        </div>
+        <div class="col-xs-12 col-lg-4">
+          <button class="btn btn-lg btn-primary btn-banner col-xs-12">Enviar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+  <div class="text-center">
+    <div class="col-xs-12 col-lg-6 row-blanco">
+      <h2>facebook</h2>
+    </div>
+    <div class="col-xs-12 col-lg-6 row-blanco">
+      <h2>twitter</h2>
+    </div>
+  </div>
 </div>
+

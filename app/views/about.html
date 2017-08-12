@@ -1,1 +1,92 @@
-<p>This is the about view.</p>
+﻿<div class="container">
+  <div class="col-xs-12 text-center margin-bottom">
+    <h2 class="texto-verde">Acerca de Spraytec</h2>
+  </div>
+  <div class="text-center">
+    <div class="col-xs-12 col-lg-7 text-left">
+      <p data-parallax='{"y": -400, "duration": 200}'><br />Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam eiAd sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam eiAd sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei</p>
+    </div>
+    <div class="col-xs-12 col-lg-5">
+      <div class="col-xs-12">
+        <img data-parallax='{"y": -400, "duration": 200}' class="img-responsive" src="http://placehold.it/350x250" />
+      </div>
+    </div>
+  </div>
+  <div class="margin-bottom"></div>
+  <div class="col-xs-12 text-center" style="padding:40px 0 40px 0">
+    <div class="col-xs-12 col-lg-4" data-parallax='{"y": -200, "duration": 200}'>
+      <div class="circ-verde" ng-mouseover="changemisionin();" ng-mouseleave="changemisionout();">
+        <h2 ng-if="mision">{{about.mision}}</h2>
+        <p ng-if="!mision">{{about.mision}}</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-4" data-parallax='{"y": -200, "duration": 200}'>
+      <div class="circ-verde" ng-mouseover="changevisionin();" ng-mouseleave="changevisionout();">
+        <h2 ng-if="vision">{{about.vision}}</h2>
+        <p ng-if="!vision">{{about.vision}}</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-4" data-parallax='{"y": -200, "duration": 200}'>
+      <div class="col-xs-12 col-lg-4">
+        <div class="circ-verde" ng-mouseover="changevaloresin();" ng-mouseleave="changevaloresout();">
+          <h2 ng-if="valores">{{about.valores}}</h2>
+          <p ng-if="!valores">{{about.valores}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 text-center margin-bottom" data-parallax='{"y": -150, "duration": 200}'>
+    <h2 class="texto-verde">Países</h2>
+    <div class="text-left">
+      <v-accordion id="accordionA" class="vAccordion--default" multiple control="accordionB" onexpand="expandCallback(index, id)" oncollapse="collapseCallback(index, id)">
+        <v-pane id="pane-1a" expanded="false" style="background-color:#EBEBEB; color:#000">
+          <v-pane-header id="pane-1a-header" aria-controls="pane-1a-content" class="container">
+            <h2>&nbsp;&nbsp;<span class="negrita"><span>Argentina</span></span></h2>
+          </v-pane-header>
+
+          <v-pane-content id="pane-1a-content" aria-labelledby="pane-1a-header">
+            <div class="row text-left">
+              <div class="container">
+
+                <div class="col-xs-12 col-lg-7 text-left margin-bottom">
+                  <div style="width:100%; height:200px; border-right:#333333 1px solid;">
+                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-lg-5 text-left margin-bottom">
+                  <div style="width:95%; height:200px">
+                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </v-pane-content>
+        </v-pane>
+
+        <v-pane id="pane-2a" expanded="false" style="background-color:#D8D8D8; color:#000">
+          <v-pane-header id="pane-2a-header" aria-controls="pane-2a-content" class="container">
+            <h2>&nbsp;&nbsp;<span class="negrita"><span>Brasil</span></span></h2>
+          </v-pane-header>
+
+          <v-pane-content id="pane-2a-content" aria-labelledby="pane-2a-header">
+            <div class="row text-left">
+              <div class="container">
+                <div class="col-xs-12 col-lg-7 text-left margin-bottom">
+                  <div style="width:100%; height:200px; border-right:#333333 1px solid;">
+                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-lg-5 text-left margin-bottom">
+                  <div style="width:95%; height:200px">
+                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </v-pane-content>
+        </v-pane>
+
+      </v-accordion>
+    </div>    
+  </div>
+</div>

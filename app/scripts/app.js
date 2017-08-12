@@ -19,6 +19,7 @@ angular
         'ngTouch',
         'ui.carousel',
         'ui.router',
+        'vAccordion',
     ])
     .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -29,6 +30,26 @@ angular
                 url: '/',
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
+            })
+            .state('about', {
+                url: '/about',
+                templateUrl: 'views/about.html',
+                controller: 'AboutCtrl'
+            })
+            .state('producto', {
+                url: '/producto',
+                templateUrl: 'views/productos.html',
+                controller: 'ProductoCtrl'
+            })
+            .state('ensayo', {
+                url: '/ensayo',
+                templateUrl: 'views/ensayos.html',
+                controller: 'EnsayoCtrl'
+            })
+            .state('contacto', {
+                url: '/contacto',
+                templateUrl: 'views/contacto.html',
+                controller: 'ContactoCtrl'
             })
     })
     .run(function ($rootScope, $location, $window, Carousel) {
