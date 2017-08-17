@@ -33,14 +33,16 @@
   <link rel="stylesheet" href="efectos/style.css">
   <link href="styles/flag/flags.css" rel="stylesheet" />
   <script src="efectos/modernizr.js"></script>
+  <link href="styles/animate.css" rel="stylesheet" />
+  <link href="styles/site.css" rel="stylesheet" />
   <!-- endbuild -->
 
 </head>
 
 <body ng-app="spraytecApp">
-  <header>
+  <header ng-controller="HeaderCtrl">
     <a href="#" style="padding-left:46px">
-      <img src="images/spraytec-logo2.png" />
+      <img class="img-responsive" src="{{imageHeader}}" />
     </a>
 
     <a href="#" class="toggle-button">
@@ -50,31 +52,69 @@
     <div class="main-menu" style="opacity: 0; display: none;">
       <div class="vertical-container">
         <div class="vertical-content">
-          <div class="col-xs-12 text-left" style="top:-50px;left:50px">
+          <!--<div class="col-xs-12 text-left" style="top:-50px;left:50px">
             <ul>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <i class="flag flag-us"></i>
-                <i class="flag flag-ar"></i>
-                <i class="flag flag-br"></i>
+                <img class="img-responsive" width="70" height="70" src="images/estados-unidos.png" ng-click="changeLanguage('en_US')"/>
+                <img class="img-responsive" width="70" height="70" src="images/argentina.png" ng-click="changeLanguage('es_AR')"/>
+                <img class="img-responsive" width="70" height="70" src="images/brasil.png" ng-click="changeLanguage('es_BR')"/>
               </li>
             </ul>
-          </div>
+          </div>-->
           <div class="container">
-            <ul>             
-              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#!/about">Nosotros</a></li>
-              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#!/producto">Productos</a></li>
-              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#">Intranet</a></li>
-              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#!/ensayo">Ensayos</a></li>
-              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);"><a href="#!/contacto">Contacto</a></li>
+            <ul>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+                <img class="img-responsive" width="70" height="70" src="images/estados-unidos.png" ng-click="changeLanguage('en_US')" />
+                <img class="img-responsive" width="70" height="70" src="images/argentina.png" ng-click="changeLanguage('es_AR')" />
+                <img class="img-responsive" width="70" height="70" src="images/brasil.png" ng-click="changeLanguage('es_BR')" />
+              </li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+                <a href="#!/about">
+                  <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menunosotros_us}}</span>
+                  <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menunosotros_ar}}</span>
+                  <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menunosotros_br}}</span>
+                </a>
+              </li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+                <a href="#!/producto">
+                  <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuproductos_us}}</span>
+                  <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuproductos_ar}}</span>
+                  <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuproductos_br}}</span>
+                </a>
+              </li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+                <a href="#">
+                  <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menupintranet_us}}</span>
+                  <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menupintranet_ar}}</span>
+                  <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menupintranet_br}}</span>
+                </a>
+              </li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+                <a href="#!/ensayo">
+                  <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuensayos_us}}</span>
+                  <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuensayos_ar}}</span>
+                  <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuensayos_br}}</span>
+                </a>
+              </li>
+              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+                <a href="#!/contacto">
+                  <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menucontactos_us}}</span>
+                  <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menucontactos_ar}}</span>
+                  <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menucontactos_br}}</span>
+                </a>
+              </li>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
 
               </li>
             </ul>
           </div>
-          <div class="col-xs-12 text-left" style="color:#fff; font-size:small; bottom:-70px">
-           <small>Spraytec Fertilizantes Ltda | Todos los derechos reservados</small> 
+          <div class="col-xs-12 text-left" style="color:#fff; font-size:medium; position:absolute; bottom:0; left:10px">
+            <p ng-if="idiomaLocal =='en_US'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_us}}</p>
+            <p ng-if="idiomaLocal =='es_AR'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_ar}}</p>
+            <p ng-if="idiomaLocal =='es_BR'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_br}}</p>
+            <div class="aniview" data-av-animation="slideInRight"></div>
           </div>
-        </div>        
+        </div>
       </div>
     </div>
 
@@ -83,7 +123,7 @@
   <div class="loader" style="display: none; opacity: 0; transform: matrix(1.6, 0, 0, 1.6, 0, 0);"></div>
 
   <div class="container-fluid">
-    <div ui-view style="padding-top: 102px;"></div>
+    <div ui-view></div>
   </div>
   <footer>
     footer
@@ -122,16 +162,19 @@
   <!-- endbuild -->
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/header.js"></script>
   <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/about.js"></script>
   <script src="scripts/controllers/producto.js"></script>
   <script src="scripts/controllers/ensayos.js"></script>
   <script src="scripts/controllers/contacto.js"></script>
+  <script src="scripts/services/contenido.service.js"></script>  
+  <script src="efectos/wow.js"></script>
   <script src="efectos/scrolling/jquery.easing.1.3.js"></script>
   <script src="efectos/scrolling/jquery.parallax-scroll.js"></script>
   <script src="efectos/vendors.min.js"></script>
   <script src="efectos/app.min.js"></script>
-  
+
   <!-- endbuild -->
 
 </body>

@@ -16,11 +16,13 @@ angular
         'ngMessages',
         'ngResource',
         'ngSanitize',
-        'ngTouch',
+        'ngMaterial',
         'ui.carousel',
         'ui.router',
         'vAccordion',
     ])
+    .constant('API_PATH', 'http://127.0.0.1:8001/')
+    .constant('API_PATH_MEDIA', 'http://127.0.0.1:8001/')
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/');

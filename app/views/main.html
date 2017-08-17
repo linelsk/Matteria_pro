@@ -3,6 +3,20 @@
 
   $(document).ready(function () {
     var s = skrollr.init();
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset: 100,
+        callback: function (box) {
+        }
+      }
+    );
+    wow.init();
+    var options = {
+      animateThreshold: 100,
+      scrollPollInterval: 20
+    }
+
     $(window).on('load scroll', function () {
       var scrolled = $(this).scrollTop();
       $('#title').css({
@@ -41,14 +55,29 @@
 </style>
 <div class="row">
   <div class="parallax-container">
-    <div class="parallax">
-      <video class="visible-desktop" id="hero-vid" poster="http://www.markhillard.com/sandbox/media/polina.jpg" autoplay loop muted>
-        <source type="video/webm" src="http://www.markhillard.com/sandbox/media/polina.webm"></source>
-        <source type="video/mp4" src="http://www.markhillard.com/sandbox/media/polina.mp4"></source>
+    <div class="parallax" style="position:static">
+      <video class="col-xs-12" style="padding:0;" id="hero-vid" autoplay loop muted>
+        <source type="video/webm" ng-src="http://127.0.0.1:8001/media/video/Clip_15.webm"></source>
+        <source type="video/mp4" ng-src="http://127.0.0.1:8001/media/video/Clip_15.mp4"></source>
       </video>
+      <div data-parallax='{"y": -80, "duration": 300}' class="col-xs-12 text-center" style="position: absolute; bottom: 50%">
+        <p style="color:#fff; font-size:35px; font-weight:bold; text-shadow:3px 2px 2px #333">
+          <span ng-if="idiomaLocal =='en_US'">{{sliderTexto[0].textomensaje_us}}</span>
+          <span ng-if="idiomaLocal =='es_AR'">{{sliderTexto[0].textomensaje_ar}}</span>
+          <span ng-if="idiomaLocal =='es_BR'">{{sliderTexto[0].textomensaje_br}}</span>
+        </p>
+      </div>
+      <div data-parallax='{"y": -80, "duration": 300}' class="col-xs-12 text-center" style="position: absolute; bottom: 30%;">
+        <button class="btn btn-lg btn-primary btn-banner" style="padding: 10px 70px 32px 70px; cursor:pointer;">
+          <span style="font-size:large; font-weight:bold;">
+            <span ng-if="idiomaLocal =='en_US'">{{sliderTexto[0].mensaje_boton_us}}</span>
+            <span ng-if="idiomaLocal =='es_AR'">{{sliderTexto[0].mensaje_boton_ar}}</span>
+            <span ng-if="idiomaLocal =='es_BR'">{{sliderTexto[0].mensaje_boton_br}}</span>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
-
   <div class="row-verde">
     <div class="container text-center">
       <br />
@@ -56,16 +85,24 @@
       <br />
       <br />
       <br />
-      <h2 data-parallax='{"y": -80, "duration": 200}'>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam in lobortis conclusionemque nam.</h2>
+      <h2 data-parallax='{"y": -80, "duration": 200}'>
+        <span ng-if="idiomaLocal =='en_US'">{{empresa[0].textomensaje_us}}</span>
+        <span ng-if="idiomaLocal =='es_AR'">{{empresa[0].textomensaje_ar}}</span>
+        <span ng-if="idiomaLocal =='es_BR'">{{empresa[0].textomensaje_br}}</span>
+      </h2>
       <br />
-      <button data-parallax='{"y": -80, "duration": 100}' class="btn btn-lg btn-primary btn-banner">Conoce más sobre Spraytec</button>
+      <button data-parallax='{"y": -80, "duration": 100}' class="btn btn-lg btn-primary btn-banner">
+        <span ng-if="idiomaLocal =='en_US'">{{empresa[0].mensaje_boton_us}}</span>
+        <span ng-if="idiomaLocal =='es_AR'">{{empresa[0].mensaje_boton_ar}}</span>
+        <span ng-if="idiomaLocal =='es_BR'">{{empresa[0].mensaje_boton_br}}</span>
+      </button>
       <br />
       <br />
       <br />
     </div>
   </div>
 
-  <div class="text-center">
+  <div class="text-center wow fadeInDown">
     <div class="col-xs-12 col-lg-6 row-verde-oscuro">
       <div style="padding: 40px 50px 50px 50px">
         <ui-carousel slides="Wrapper_slider1">
@@ -76,17 +113,18 @@
       </div>
 
     </div>
-    <div class="col-xs-12 col-lg-6 row-blanco">
-      <h2 class="texto-verde">Fulltec</h2>
-      <p class="text-left" style="font-weight:normal">Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani at, mea te audire phaedrum, mel et nibh aliquam. </p>
-      <ul class="text-left" style="font-weight:normal">
-        <li style="padding-left:50px; line-height:40px"><i>°</i> Ad sea dolor accusata consequuntur.</li>
-        <li style="padding-left:50px; line-height:40px"><i>°</i> Sit facete convenire reprehendunt et</li>
-        <li style="padding-left:50px; line-height:40px"><i>°</i> Fabulas dolorem ei has, quem molestie persequeris et sit</li>
-      </ul>
+    <div class="col-xs-12 col-lg-6 row-blanco wow slideInRight">
+      <h2 class="texto-verde">{{fulltec[0].titulo}}</h2>
+      <p ng-if="idiomaLocal =='en_US'" class="text-left" style="font-weight:normal" ng-bind-html="fulltec[0].textomensaje_us"></p>
+      <p ng-if="idiomaLocal =='es_AR'" class="text-left" style="font-weight:normal" ng-bind-html="fulltec[0].textomensaje_ar"></p>
+      <p ng-if="idiomaLocal =='es_BR'" class="text-left" style="font-weight:normal" ng-bind-html="fulltec[0].textomensaje_br"></p>
       <br />
       <br />
-      <button class="btn btn-lg btn-primary btn-banner">Todos los productos</button>
+      <button class="btn btn-lg btn-primary btn-banner">
+        <span ng-if="idiomaLocal =='en_US'">{{fulltec[0].mensaje_boton_us}}</span>
+        <span ng-if="idiomaLocal =='es_AR'">{{fulltec[0].mensaje_boton_ar}}</span>
+        <span ng-if="idiomaLocal =='es_BR'">{{fulltec[0].mensaje_boton_br}}</span>
+      </button>
     </div>
   </div>
   <div class="text-center">
@@ -94,7 +132,12 @@
       <br />
       <br />
       <br />
-      <h2 data-parallax='{"y": -100, "duration": 200}'><br />Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei</h2>
+      <h2 data-parallax='{"y": -100, "duration": 200}'>
+        <br />
+        <span ng-if="idiomaLocal =='en_US'">{{Empresa_no[0].textomensaje_us}}</span>
+        <span ng-if="idiomaLocal =='es_AR'">{{Empresa_no[0].textomensaje_ar}}</span>
+        <span ng-if="idiomaLocal =='es_BR'">{{Empresa_no[0].textomensaje_br}}</span>
+      </h2>
     </div>
     <div class="col-xs-12 col-lg-5 row-gris">
       <div class="col-xs-12">
@@ -105,23 +148,34 @@
   <div class="row-verde"><small style="color:#3FC380">.</small></div>
   <div class="row-verde" style="padding-bottom:70px;">
     <div class="container text-center">
-      <h2>Contactanos y recibe más información.</h2>
+      <h2 ng-if="idiomaLocal =='en_US'">{{contacto[0].textomensaje_us}}</h2>
+      <h2 ng-if="idiomaLocal =='es_AR'">{{contacto[0].textomensaje_ar}}</h2>
+      <h2 ng-if="idiomaLocal =='es_BR'">{{contacto[0].textomensaje_br}}</h2>
       <br />
       <div class="col-xs-12">
         <div class="col-xs-12 col-lg-4">
-          <input type="text" class="form-control" placeholder="Correo electrónico">
+          <input ng-if="idiomaLocal =='en_US'" type="text" class="form-control" placeholder="{{contacto[0].placeholder_correo_us}}">
+          <input ng-if="idiomaLocal =='es_AR'" type="text" class="form-control" placeholder="{{contacto[0].placeholder_correo_ar}}">
+          <input ng-if="idiomaLocal =='es_BR'" type="text" class="form-control" placeholder="{{contacto[0].placeholder_correo_br}}">
         </div>
         <div class="col-xs-12 col-lg-4">
-          <input type="text" class="form-control" placeholder="Nombre completo">
+          <input ng-if="idiomaLocal =='en_US'" type="text" class="form-control" placeholder="{{contacto[0].placeholder_nombre_us}}">
+          <input ng-if="idiomaLocal =='es_AR'" type="text" class="form-control" placeholder="{{contacto[0].placeholder_nombre_ar}}">
+          <input ng-if="idiomaLocal =='es_BR'" type="text" class="form-control" placeholder="{{contacto[0].placeholder_nombre_br}}">
         </div>
         <div class="col-xs-12 col-lg-4">
-          <button class="btn btn-lg btn-primary btn-banner col-xs-12">Enviar</button>
+          <button class="btn btn-lg btn-primary btn-banner col-xs-12">
+            <span ng-if="idiomaLocal =='en_US'">{{contacto[0].mensaje_boton_us}}</span>
+            <span ng-if="idiomaLocal =='es_AR'">{{contacto[0].mensaje_boton_ar}}</span>
+            <span ng-if="idiomaLocal =='es_BR'">{{contacto[0].mensaje_boton_br}}</span>
+          </button>
+
         </div>
 
       </div>
     </div>
   </div>
-  
+
   <div class="text-center">
     <div class="col-xs-12 col-lg-6 row-blanco">
       <h2>facebook</h2>

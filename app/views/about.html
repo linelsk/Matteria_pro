@@ -1,10 +1,18 @@
-﻿<div class="container">
+﻿<div style="width:100%; height:110px"></div>
+<div class="container">
   <div class="col-xs-12 text-center margin-bottom">
-    <h2 class="texto-verde">Acerca de Spraytec</h2>
+    <h2 ng-if="idiomaLocal =='en_US'" class="texto-verde">{{acerca[0].titulo_us}}</h2>
+    <h2 ng-if="idiomaLocal =='es_AR'" class="texto-verde">{{acerca[0].titulo_ar}}</h2>
+    <h2 ng-if="idiomaLocal =='es_BR'" class="texto-verde">{{acerca[0].titulo_br}}</h2>
   </div>
   <div class="text-center">
     <div class="col-xs-12 col-lg-7 text-left">
-      <p data-parallax='{"y": -400, "duration": 200}'><br />Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam eiAd sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam eiAd sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei</p>
+      <p data-parallax='{"y": -400, "duration": 200}'>
+        <br />
+        <span ng-if="idiomaLocal =='en_US'" ng-bind-html="acerca[0].textomensaje_us"></span>
+        <span ng-if="idiomaLocal =='es_AR'" ng-bind-html="acerca[0].textomensaje_ar"></span>
+        <span ng-if="idiomaLocal =='es_BR'" ng-bind-html="acerca[0].textomensaje_br"></span>
+      </p>
     </div>
     <div class="col-xs-12 col-lg-5">
       <div class="col-xs-12">
@@ -87,6 +95,6 @@
         </v-pane>
 
       </v-accordion>
-    </div>    
+    </div>
   </div>
 </div>

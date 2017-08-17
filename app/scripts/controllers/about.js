@@ -8,7 +8,7 @@
  * Controller of the spraytecApp
  */
 angular.module('spraytecApp')
-    .controller('AboutCtrl', ['$scope', function ($scope) {
+    .controller('AboutCtrl', ['$scope', '$window', 'contenidoFactory', function ($scope, $window, contenidoFactory) {
         $scope.about = {};
         $scope.mision = true;
         $scope.vision = true;
@@ -18,7 +18,34 @@ angular.module('spraytecApp')
         $scope.about.vision = "Visión";
         $scope.about.valores = "Valores";
 
-        console.log($scope.about.mision);
+        $scope.idiomaLocal;
+        //$window.localStorage.idioma == $scope.idiomaLocal;
+
+        $scope.calcular = function () {
+            //console.log($window.localStorage.idioma);
+            switch ($window.localStorage.idioma) {
+                case 'en_US':
+                    $scope.idiomaLocal = 'en_US';
+                    break;
+                case 'es_AR':
+                    $scope.idiomaLocal = 'es_AR';
+                    break;
+                case 'es_BR':
+                    $scope.idiomaLocal = 'es_BR';
+                    break;
+
+                default:
+            }
+            //$scope.sliderVideo = $scope.sliderVideo;
+            //$scope.sliderTexto = $scope.sliderTexto;
+        }
+
+        $scope.$watch($scope.calcular);
+
+        contenidoFactory.ServiceContenido('manager/Seccion_Acerca/?format=json', 'GET', '{}').then(function (data) {
+            console.log(data.data);
+            $scope.acerca = data.data;
+        });
 
         $scope.changemisionin = function () {
             $scope.mision = false
