@@ -1,1 +1,7 @@
 [0811/104216.286:ERROR:settings.cc(258)] Settings magic is not 1129342067
+[0817/155817.099:ERROR:process_info.cc(632)] range at 0x32a2353a00000000, size 0x20e fully unreadable
+[0817/155817.099:ERROR:process_info.cc(632)] range at 0x32a2359c00000000, size 0x20e fully unreadable
+[0817/155817.099:ERROR:process_info.cc(632)] range at 0x0, size 0x20e fully unreadable
+[0817/160809.562:ERROR:process_info.cc(632)] range at 0xd6e8353a00000000, size 0x18b fully unreadable
+[0817/160809.563:ERROR:process_info.cc(632)] range at 0xd6e8359a00000000, size 0x18b fully unreadable
+[0817/160809.563:ERROR:process_info.cc(632)] range at 0x0, size 0x18b fully unreadable

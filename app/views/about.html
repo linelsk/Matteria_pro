@@ -1,13 +1,15 @@
 ﻿<div style="width:100%; height:110px"></div>
 <div class="container">
   <div class="col-xs-12 text-center margin-bottom">
-    <h2 ng-if="idiomaLocal =='en_US'" class="texto-verde">{{acerca[0].titulo_us}}</h2>
-    <h2 ng-if="idiomaLocal =='es_AR'" class="texto-verde">{{acerca[0].titulo_ar}}</h2>
-    <h2 ng-if="idiomaLocal =='es_BR'" class="texto-verde">{{acerca[0].titulo_br}}</h2>
+    <h2 class="texto-verde">
+      <span ng-if="idiomaLocal =='en_US'">{{acerca[0].titulo_us}}</span>
+      <span ng-if="idiomaLocal =='es_AR'">{{acerca[0].titulo_ar}}</span>
+      <span ng-if="idiomaLocal =='es_BR'">{{acerca[0].titulo_br}}</span>
+    </h2>
   </div>
   <div class="text-center">
     <div class="col-xs-12 col-lg-7 text-left">
-      <p data-parallax='{"y": -400, "duration": 200}'>
+      <p data-parallax='{"y": -400, "duration": 200}' style="text-align:justify">
         <br />
         <span ng-if="idiomaLocal =='en_US'" ng-bind-html="acerca[0].textomensaje_us"></span>
         <span ng-if="idiomaLocal =='es_AR'" ng-bind-html="acerca[0].textomensaje_ar"></span>
@@ -16,7 +18,7 @@
     </div>
     <div class="col-xs-12 col-lg-5">
       <div class="col-xs-12">
-        <img data-parallax='{"y": -400, "duration": 200}' class="img-responsive" src="http://placehold.it/350x250" />
+        <img data-parallax='{"y": -400, "duration": 200}' class="img-responsive" src="{{API_PATH_MEDIA}}{{acerca[0].image}}" />
       </div>
     </div>
   </div>
@@ -24,76 +26,65 @@
   <div class="col-xs-12 text-center" style="padding:40px 0 40px 0">
     <div class="col-xs-12 col-lg-4" data-parallax='{"y": -200, "duration": 200}'>
       <div class="circ-verde" ng-mouseover="changemisionin();" ng-mouseleave="changemisionout();">
-        <h2 ng-if="mision">{{about.mision}}</h2>
-        <p ng-if="!mision">{{about.mision}}</p>
+        <h2 ng-if="mision">
+          <span style="font-weight:bold">{{about.mision}}</span>
+        </h2>
+        <p ng-if="!mision" style="padding:15px 25px 15px 25px">
+          <span>{{about.mision_texto}}</span>
+        </p>
       </div>
     </div>
     <div class="col-xs-12 col-lg-4" data-parallax='{"y": -200, "duration": 200}'>
       <div class="circ-verde" ng-mouseover="changevisionin();" ng-mouseleave="changevisionout();">
-        <h2 ng-if="vision">{{about.vision}}</h2>
-        <p ng-if="!vision">{{about.vision}}</p>
+        <h2 ng-if="vision" style="font-weight:bold">{{about.vision}}</h2>
+        <p ng-if="!vision" style="padding:15px 25px 15px 25px">{{about.vision_texto}}</p>
       </div>
     </div>
     <div class="col-xs-12 col-lg-4" data-parallax='{"y": -200, "duration": 200}'>
       <div class="col-xs-12 col-lg-4">
         <div class="circ-verde" ng-mouseover="changevaloresin();" ng-mouseleave="changevaloresout();">
-          <h2 ng-if="valores">{{about.valores}}</h2>
-          <p ng-if="!valores">{{about.valores}}</p>
+          <h2 ng-if="valores" style="font-weight:bold">{{about.valores}}</h2>
+          <p ng-if="!valores" style="padding:15px 25px 15px 25px">{{about.valores_texto}}</p>
         </div>
       </div>
     </div>
   </div>
   <div class="col-xs-12 text-center margin-bottom" data-parallax='{"y": -150, "duration": 200}'>
-    <h2 class="texto-verde">Países</h2>
+    <h2 class="texto-verde">
+      <span ng-if="idiomaLocal =='en_US'">{{titulopais[0].titulo_us}}</span>
+      <span ng-if="idiomaLocal =='es_AR'">{{titulopais[0].titulo_ar}}</span>
+      <span ng-if="idiomaLocal =='es_BR'">{{titulopais[0].titulo_br}}</span>
+    </h2>
     <div class="text-left">
-      <v-accordion id="accordionA" class="vAccordion--default" multiple control="accordionB" onexpand="expandCallback(index, id)" oncollapse="collapseCallback(index, id)">
-        <v-pane id="pane-1a" expanded="false" style="background-color:#EBEBEB; color:#000">
-          <v-pane-header id="pane-1a-header" aria-controls="pane-1a-content" class="container">
-            <h2>&nbsp;&nbsp;<span class="negrita"><span>Argentina</span></span></h2>
+      <v-accordion id="accordionA" class="vAccordion--default" control="accordionA" onexpand="expandCallback(index, id)" oncollapse="collapseCallback(index, id)">
+        <v-pane id="pane-{{hacemos.pais_ar}}" ng-repeat="hacemos in acoordeon" ng-if="$index >= 1" style="background-color:{{hacemos.color}}; color:#000; padding:20px 10px 20px 10px">
+          <v-pane-header id="pane-{{hacemos.pais_ar}}-header" aria-controls="pane-{{hacemos.pais_ar}}-content">
+            
+            <span style="font-size:large; font-weight:bold;">
+              <span ng-if="idiomaLocal == 'es_AR'">{{hacemos.pais_ar}}</span>
+              <span ng-if="idiomaLocal == 'en_US'">{{hacemos.pais_us}}</span>
+              <span ng-if="idiomaLocal == 'es_BR'">{{hacemos.pais_br}}</span>
+            </span>
           </v-pane-header>
-
-          <v-pane-content id="pane-1a-content" aria-labelledby="pane-1a-header">
-            <div class="row text-left">
-              <div class="container">
-
-                <div class="col-xs-12 col-lg-7 text-left margin-bottom">
-                  <div style="width:100%; height:200px; border-right:#333333 1px solid;">
-                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
-                  </div>
+          <v-pane-content id="pane-{{hacemos.pais_ar}}-content aria-labelledby="pane-{{hacemos.pais_ar}}-header>
+            <div class="container">
+              <div class="col-xs-12 col-lg-7 text-left margin-bottom">
+                <div style="width:100%; height:200px; border-right:#333333 1px solid;">
+                  <h4 ng-bind-html="hacemos.textomensaje_ar" ng-if="idiomaLocal == 'es_AR'"></h4>
+                  <h4 ng-bind-html="hacemos.textomensaje_us" ng-if="idiomaLocal == 'en_US'"></h4>
+                  <h4 ng-bind-html="hacemos.textomensaje_us" ng-if="idiomaLocal == 'es_BR'"></h4>
                 </div>
-                <div class="col-xs-12 col-lg-5 text-left margin-bottom">
-                  <div style="width:95%; height:200px">
-                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
-                  </div>
+              </div>
+              <div class="col-xs-12 col-lg-5 text-left margin-bottom">
+                <div style="width:95%; height:200px">
+                  <h4 ng-bind-html="hacemos.datos_contacto_ar" ng-if="idiomaLocal == 'es_AR'"></h4>
+                  <h4 ng-bind-html="hacemos.datos_contacto_us" ng-if="idiomaLocal == 'en_US'"></h4>
+                  <h4 ng-bind-html="hacemos.datos_contacto_us" ng-if="idiomaLocal == 'es_BR'"></h4>
                 </div>
               </div>
             </div>
           </v-pane-content>
         </v-pane>
-
-        <v-pane id="pane-2a" expanded="false" style="background-color:#D8D8D8; color:#000">
-          <v-pane-header id="pane-2a-header" aria-controls="pane-2a-content" class="container">
-            <h2>&nbsp;&nbsp;<span class="negrita"><span>Brasil</span></span></h2>
-          </v-pane-header>
-
-          <v-pane-content id="pane-2a-content" aria-labelledby="pane-2a-header">
-            <div class="row text-left">
-              <div class="container">
-                <div class="col-xs-12 col-lg-7 text-left margin-bottom">
-                  <div style="width:100%; height:200px; border-right:#333333 1px solid;">
-                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-lg-5 text-left margin-bottom">
-                  <div style="width:95%; height:200px">
-                    <h4>No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </v-pane-content>
-        </v-pane>
-
       </v-accordion>
     </div>
   </div>

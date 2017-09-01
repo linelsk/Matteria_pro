@@ -1,4 +1,5 @@
-﻿<div class="container">
+﻿<div style="width:100%; height:90px"></div>
+<div class="container">
   <div class="col-xs-12 text-center margin-bottom">
     <h2 class="texto-verde">Ensayos</h2>
   </div>
@@ -8,54 +9,59 @@
       <h2>Filtros:</h2>
     </div>
     <div class="col-xs-12 col-lg-3" style="padding-top:20px;">
-      <select class="form-control">
-        <option value="0">País</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+      <select id="selectPais" class="form-control" ng-if="idiomaLocal =='en_US'" ng-model="filtroPais" ng-change="setbusqueda();">
+        <option value="">País</option>
+        <option ng-repeat="x in pais" value="{{x.id}}">{{x.nombre_us}}</option>
+      </select>
+      <select id="selectPais" class="form-control" ng-if="idiomaLocal =='es_AR'" ng-model="filtroPais" ng-change="setbusqueda();">
+        <option value="">País</option>
+        <option ng-repeat="x in pais" value="{{x.id}}">{{x.nombre_ar}}</option>
+      </select>
+      <select id="selectPais" class="form-control" ng-if="idiomaLocal =='es_BR'" ng-model="filtroPais" ng-change="setbusqueda();">
+        <option value="">País</option>
+        <option ng-repeat="x in pais" value="{{x.id}}">{{x.nombre_br}}</option>
+      </select>
+    </div>
+
+    <div class="col-xs-12 col-lg-3" style="padding-top:20px;">
+      <select id="selectCultivo" class="form-control" ng-if="idiomaLocal =='en_US'" ng-model="filtroCultivo" ng-change="setbusquedaCultivo();">
+        <option value="">Cultivo</option>
+        <option ng-repeat="x in cultivo" value="{{x.id}}">{{x.nombre_us}}</option>
+      </select>
+      <select id="selectCultivo" class="form-control" ng-if="idiomaLocal =='es_AR'" ng-model="filtroCultivo" ng-change="setbusquedaCultivo();">
+        <option value="">Cultivo</option>
+        <option ng-repeat="x in cultivo" value="{{x.id}}">{{x.nombre_ar}}</option>
+      </select>
+      <select id="selectCultivo" class="form-control" ng-if="idiomaLocal =='es_BR'" ng-model="filtroCultivo" ng-change="setbusquedaCultivo();">
+        <option value="">Cultivo</option>
+        <option ng-repeat="x in cultivo" value="x.id">{{x.nombre_br}}</option>
       </select>
     </div>
     <div class="col-xs-12 col-lg-3" style="padding-top:20px;">
-      <select class="form-control">
-        <option value="0">Cultivo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+      <select id="selectProducto" class="form-control" ng-model="filtroNombre" ng-change="setbusquedaProducto();">
+        <option value="">Producto</option>
+        <option ng-repeat="x in productos" value="{{x.id}}">{{x.nombre}}</option>
       </select>
     </div>
-    <div class="col-xs-12 col-lg-3" style="padding-top:20px;">
-      <select class="form-control">
-        <option value="0">Producto</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
-    </div>
-    <div class="col-xs-12 col-lg-1" style="padding-top:20px;">
+
+    <!--<div class="col-xs-12 col-lg-1" style="padding-top:20px;">
       <button class="btn btn-lg btn-primary btn-banner col-xs-12">Ir</button>
-    </div>
+    </div>-->
   </div>
   <div class="col-xs-12 margin-bottom">
-    <div class="col-xs-12 col-lg-4">
-      <a href="#"><img class="img-responsive" src="http://via.placeholder.com/700x600/3FC380/ffffff"></a>
-    </div>
-    <div class="col-xs-12 col-lg-4">
-      <a href="#"><img class="img-responsive" src="http://via.placeholder.com/700x600/3FC380/ffffff"></a>
-    </div>
-    <div class="col-xs-12 col-lg-4">
-      <a href="#"><img class="img-responsive" src="http://via.placeholder.com/700x600/3FC380/ffffff"></a>
-    </div>
-  </div>
-
-  <div class="col-xs-12">
-    <div class="col-xs-12 col-lg-4">
-      <a href="#"><img class="img-responsive" src="http://via.placeholder.com/700x600/3FC380/ffffff"></a>
-    </div>
-    <div class="col-xs-12 col-lg-4">
-      <a href="#"><img class="img-responsive" src="http://via.placeholder.com/700x600/3FC380/ffffff"></a>
-    </div>
-    <div class="col-xs-12 col-lg-4">
-      <a href="#"><img class="img-responsive" src="http://via.placeholder.com/700x600/3FC380/ffffff"></a>
+    <div class="col-xs-12 col-lg-4" ng-repeat="x in ensayos ">
+      <div class="text-center" style="border:solid #fff; border-radius:10px; width:100%; height:300px; background-color:#F4F4F4; box-shadow: 0 2px 2px #888888;">
+        <br />
+        <i class="fa fa-file-text-o" style="font-size:80px; color:#3FC380" aria-hidden="true"></i>
+        <br />
+        <br />
+        <h4 style="font-weight:bold;">{{x.nombre}}</h4>
+        <br />
+        <a href="{{API_PATH_MEDIA}}{{x.file}}" target="_blank">
+          <i class="fa fa-cloud-download" style="font-size:50px;" aria-hidden="true"></i>
+        </a>       
+      </div>
+      <br />
     </div>
   </div>
 </div>

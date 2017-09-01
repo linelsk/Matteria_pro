@@ -1,0 +1,48 @@
+﻿<script>
+  $(document).ready(function () {
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset: 100,
+        callback: function (box) {
+        }
+      }
+    );
+    wow.init();
+    var options = {
+      animateThreshold: 100,
+      scrollPollInterval: 20
+    }
+  });
+</script>
+
+<div style="width:100%; height:90px"></div>
+<div class="container margin-bottom text-left">
+  <a href="producto" class="btn btn-lg btn-primary btn-banner" cursor:pointer;">
+    <span style="font-weight:bold">Regresar</span>
+  </a>
+</div>
+<div class="container margin-bottom text-center texto-verde">
+  <h1>{{producto.nombre}}</h1>
+</div>
+<div class="container margin-bottom text-center">
+  <div class="col-xs-6">
+    <img class="img-responsive wow slideInRight" width="350" height="250" src="{{API_PATH_MEDIA}}{{producto.image}}" />
+  </div>  
+  <div class="col-xs-6 text-left wow slideInLeft">
+    <h3>{{producto.presentacion}}</h3>
+  </div> 
+  <div class="col-xs-12 margin-bottom">
+    <br /><br /><br />
+  </div>
+  <div class="col-xs-12 text-center">
+    <a class="btn btn-lg btn-primary col-xs-5 btn-banner"cursor:pointer;" href="{{API_PATH_MEDIA}}{{producto.hojaseguridad}}" target="_blank">
+      <span style="font-weight:bold">Hoja de seguridad</span>
+    </a>
+    <div class="col-xs-2"></div>
+    <a class="btn btn-lg btn-primary col-xs-5 btn-banner" cursor:pointer;" href="{{API_PATH_MEDIA}}{{producto.folletoproducto}}" target="_blank">      
+      <span style="font-weight:bold">Folleto de producto</span>
+    </a>
+  </div> 
+</div>
+<div style="width:100%; height:100px"></div>

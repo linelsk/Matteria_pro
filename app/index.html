@@ -1,133 +1,328 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+  <meta name="viewport" content="width=device-width">
   <meta name="author" content="http://www.aper.net">
 
   <title>Spraytec</title>
   <base href="/">
   <meta name="description" content="Spraytec">
 
-  <meta property="og:site_name" content="aper.net">
-  <meta property="og:url" content="http://www.aper.net">
-  <meta property="og:image" content="http://www.feedmusic.com/images/logo.png">
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
   <meta property="og:locale" content="en_EN">
   <meta property="og:description" content="Spraytec">
 
-  <link rel="shortcut icon" href="">
-
+  <link rel="shortcut icon" href="http://www.spraytecfertilizantes.com/wp-content/uploads/2015/04/favicon.ico">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-  <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css" />
+  <!--<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css" />-->
   <link rel="stylesheet" href="bower_components/angular-ui-carousel/dist/ui-carousel.css" />
   <link rel="stylesheet" href="bower_components/v-accordion/dist/v-accordion.css" />
+  <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="efectos/style.css">
+  <!--<link rel="stylesheet" href="efectos/style.css">-->
   <link href="styles/flag/flags.css" rel="stylesheet" />
   <script src="efectos/modernizr.js"></script>
   <link href="styles/animate.css" rel="stylesheet" />
-  <link href="styles/site.css" rel="stylesheet" />
   <!-- endbuild -->
+  <!--<script>
+    function ResizeBody() {
+      document.body.style.width = "100%";
+      document.body.style.height = "auto";
+    }
+  </script>-->
 
 </head>
 
-<body ng-app="spraytecApp">
-  <header ng-controller="HeaderCtrl">
-    <a href="#" style="padding-left:46px">
-      <img class="img-responsive" src="{{imageHeader}}" />
-    </a>
-
-    <a href="#" class="toggle-button">
-      <span class="lines"></span>
-    </a>
-
-    <div class="main-menu" style="opacity: 0; display: none;">
-      <div class="vertical-container">
-        <div class="vertical-content">
-          <!--<div class="col-xs-12 text-left" style="top:-50px;left:50px">
-            <ul>
-              <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <img class="img-responsive" width="70" height="70" src="images/estados-unidos.png" ng-click="changeLanguage('en_US')"/>
-                <img class="img-responsive" width="70" height="70" src="images/argentina.png" ng-click="changeLanguage('es_AR')"/>
-                <img class="img-responsive" width="70" height="70" src="images/brasil.png" ng-click="changeLanguage('es_BR')"/>
+<body ng-app="spraytecApp" ng-controller="HeaderCtrl">
+  <header class="container-fluid header">
+    <div class="container">
+      <div class="col-xs-12">
+        <div class="col-xs-6 text-left" style="padding:10px 10px 10px 10px">
+                    
+          <a ui-sref="main" ng-click="setUnMenu();">
+            <img class="img-responsive" width="{{width}}" height="{{height}}" src="{{API_PATH_MEDIA}}{{imageHeader}}" />
+          </a>
+          <div ng-if="badera" style="width:100%; height:{{tama}};padding:0;">
+            <ul style="bottom:0; left:0; position:absolute; padding-left:0;">
+              <li style="font-size:smaller; list-style: none;">
+                <p ng-if="idiomaLocal =='en_US'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_us}}</p>
+                <p ng-if="idiomaLocal =='es_AR'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_ar}}</p>
+                <p ng-if="idiomaLocal =='es_BR'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_br}}</p>
               </li>
             </ul>
-          </div>-->
-          <div class="container">
+          </div>          
+        </div>
+    
+        <div class="col-xs-6 text-right" style="padding:10px 10px 10px 10px">
+          <br />
+         
+          <div>
+
+            <img ng-if="badera" class="img-responsive bande-us hidden-xs" width="35" height="35" src="images/estados-unidos.png" ng-click="changeLanguage('en_US')"/>
+            <img ng-if="badera" class="img-responsive bande-ar hidden-xs" width="35" height="35" src="images/argentina.png" ng-click="changeLanguage('es_AR')" />
+            <img ng-if="badera" class="img-responsive bande-br hidden-xs" width="35" height="35" src="images/brasil.png" ng-click="changeLanguage('es_BR')" />
+            <input class="burger-check" id="burger-check" type="checkbox" ng-click="setMenu();"><label for="burger-check" class="burger"></label>
+            <nav id="navigation1" class="navigation">
+              <ul style=" margin-right:0; padding: 0 ">
+                <li style="list-style: none; font-size: 25px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <img ng-if="badera" class="img-responsive hidden-sm hidden-md hidden-lg" width="30" height="30" src="images/estados-unidos.png" ng-click="changeLanguage('en_US')" />
+                  <img ng-if="badera" class="img-responsive hidden-sm hidden-md hidden-lg" width="30" height="30" src="images/argentina.png" ng-click="changeLanguage('es_AR')" />
+                  <img ng-if="badera" class="img-responsive hidden-sm hidden-md hidden-lg" width="30" height="30" src="images/brasil.png" ng-click="changeLanguage('es_BR')" />
+                </li>
+                <li class="hidden-xs" style="list-style: none; font-size: 25px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="about">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menunosotros_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menunosotros_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menunosotros_br}}</span>
+                  </a>
+                </li>
+                <li class="hidden-sm hidden-md hidden-lg" style="list-style: none; font-size: 20px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="about">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menunosotros_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menunosotros_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menunosotros_br}}</span>
+                  </a>
+                </li>
+
+                <li class="hidden-xs" style="list-style: none; font-size: 25px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="producto">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuproductos_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuproductos_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuproductos_br}}</span>
+                  </a>
+                </li>
+                <li class="hidden-sm hidden-md hidden-lg" style="list-style: none; font-size: 20px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="producto">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuproductos_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuproductos_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuproductos_br}}</span>
+                  </a>
+                </li>
+
+                <li class="hidden-xs" style="list-style: none; font-size: 25px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a href="{{menuHeader.menupintranet_url}}" target="_blank">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menupintranet_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menupintranet_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menupintranet_br}}</span>
+                  </a>
+                </li>
+                <li class="hidden-sm hidden-md hidden-lg" style="list-style: none; font-size: 20px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a href="{{menuHeader.menupintranet_url}}" target="_blank">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menupintranet_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menupintranet_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menupintranet_br}}</span>
+                  </a>
+                </li>
+
+                <li class="hidden-xs" style="list-style: none; font-size: 25px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="ensayo">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuensayos_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuensayos_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuensayos_br}}</span>
+                  </a>
+                </li>
+                <li class="hidden-sm hidden-md hidden-lg" style="list-style: none; font-size: 20px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="ensayo">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuensayos_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuensayos_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuensayos_br}}</span>
+                  </a>
+                </li>
+
+                <li class="hidden-xs" style="list-style: none; font-size: 25px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="contacto">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menucontactos_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menucontactos_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menucontactos_br}}</span>
+                  </a>
+                </li>
+                <li class="hidden-sm hidden-md hidden-lg" style="list-style: none; font-size: 20px; padding: 5px 0; font-weight:bold;" ng-click="setUnMenu();">
+                  <a ui-sref="contacto">
+                    <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menucontactos_us}}</span>
+                    <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menucontactos_ar}}</span>
+                    <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menucontactos_br}}</span>
+                  </a>
+                </li>
+              </ul>              
+            </nav>
+          </div>
+          
+          
+        </div>
+      </div>     
+    </div>
+    
+    <!--<div id="demo" class="collapse container text-right">
+    <ul>
+      <li class="text-left">ddddddddddddddd</li>
+      <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">dddddddddddddd
+        <img class="img-responsive" width="100" height="100" src="{{imageHeader}}" style="position:absolute; bottom:0; left:5px" />
+        
+        
+        <img class="img-responsive" width="50" height="50" src="images/brasil.png" ng-click="changeLanguage('es_BR')" />
+      </li>
+
+      <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+        <a ui-sref="about">
+          <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menunosotros_us}}</span>
+          <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menunosotros_ar}}</span>
+          <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menunosotros_br}}</span>
+        </a>
+      </li>
+      <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+        <a ui-sref="producto">
+          <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuproductos_us}}</span>
+          <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuproductos_ar}}</span>
+          <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuproductos_br}}</span>
+        </a>
+      </li>
+      <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+        <a href="">
+          <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menupintranet_us}}</span>
+          <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menupintranet_ar}}</span>
+          <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menupintranet_br}}</span>
+        </a>
+      </li>
+      <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+        <a ui-sref="ensayo">
+          <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuensayos_us}}</span>
+          <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuensayos_ar}}</span>
+          <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuensayos_br}}</span>
+        </a>
+      </li>
+      <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+        <a ui-sref="contacto">
+          <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menucontactos_us}}</span>
+          <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menucontactos_ar}}</span>
+          <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menucontactos_br}}</span>
+        </a>
+        <br />
+      </li>
+      <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
+
+      </li>
+    </ul>
+  </div>-->
+    <!--<div class="main-menu" style="opacity: 0; display: none;">
+      <div class="vertical-container">
+        <div class="vertical-content">
+          <div class="container text-right" style="padding-left:0;">
             <ul>
+              <li class="text-left"></li>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <img class="img-responsive" width="70" height="70" src="images/estados-unidos.png" ng-click="changeLanguage('en_US')" />
-                <img class="img-responsive" width="70" height="70" src="images/argentina.png" ng-click="changeLanguage('es_AR')" />
-                <img class="img-responsive" width="70" height="70" src="images/brasil.png" ng-click="changeLanguage('es_BR')" />
+                <img class="img-responsive" width="100" height="100" src="{{imageHeader}}" style="position:absolute; bottom:0; left:5px" />
+                <img class="img-responsive" width="50" height="50" src="images/estados-unidos.png" ng-click="changeLanguage('en_US')" />
+                <img class="img-responsive" width="50" height="50" src="images/argentina.png" ng-click="changeLanguage('es_AR')" />
+                <img class="img-responsive" width="50" height="50" src="images/brasil.png" ng-click="changeLanguage('es_BR')" />
               </li>
+
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <a href="#!/about">
+                <a ui-sref="about">
                   <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menunosotros_us}}</span>
                   <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menunosotros_ar}}</span>
                   <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menunosotros_br}}</span>
                 </a>
               </li>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <a href="#!/producto">
+                <a ui-sref="producto">
                   <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuproductos_us}}</span>
                   <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuproductos_ar}}</span>
                   <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuproductos_br}}</span>
                 </a>
               </li>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <a href="#">
+                <a href="">
                   <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menupintranet_us}}</span>
                   <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menupintranet_ar}}</span>
                   <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menupintranet_br}}</span>
                 </a>
               </li>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <a href="#!/ensayo">
+                <a ui-sref="ensayo">
                   <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuensayos_us}}</span>
                   <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuensayos_ar}}</span>
                   <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuensayos_br}}</span>
                 </a>
               </li>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
-                <a href="#!/contacto">
+                <a ui-sref="contacto">
                   <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menucontactos_us}}</span>
                   <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menucontactos_ar}}</span>
                   <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menucontactos_br}}</span>
                 </a>
+                <br />
               </li>
               <li style="opacity: 0; transform: matrix(0.8, 0, 0, 0.8, 0, 0);">
 
               </li>
             </ul>
           </div>
-          <div class="col-xs-12 text-left" style="color:#fff; font-size:medium; position:absolute; bottom:0; left:10px">
+          <div class="col-xs-12 text-left" style="color:#000; font-size:small; position:absolute; bottom:0; left:90px">
             <p ng-if="idiomaLocal =='en_US'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_us}}</p>
             <p ng-if="idiomaLocal =='es_AR'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_ar}}</p>
             <p ng-if="idiomaLocal =='es_BR'">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_br}}</p>
-            <div class="aniview" data-av-animation="slideInRight"></div>
           </div>
         </div>
       </div>
-    </div>
-
+    </div>-->
+   
   </header>
-
-  <div class="loader" style="display: none; opacity: 0; transform: matrix(1.6, 0, 0, 1.6, 0, 0);"></div>
 
   <div class="container-fluid">
     <div ui-view></div>
   </div>
-  <footer>
-    footer
-  </footer>
+  <div style="background-color:#4A4A4A; color:#fff; width:100%; height:100px;">
+    <div class="container-fluid col-xs-12">
+      <div class="container">
+        <div class="col-xs-12 col-lg-6 text-left">
+          <p style="padding:45px 20px 20px 0">
+            <a href="about" style="color:#ffffff">
+              <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menunosotros_us}}</span>
+              <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menunosotros_ar}}</span>
+              <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menunosotros_br}}</span>
+            </a> |
+            <a href="producto" style="color:#ffffff">
+              <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuproductos_us}}</span>
+              <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuproductos_ar}}</span>
+              <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuproductos_br}}</span>
+            </a> |
+            <a href="#" style="color:#ffffff">
+              <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menupintranet_us}}</span>
+              <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menupintranet_ar}}</span>
+              <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menupintranet_br}}</span>
+            </a> |
+            <a href="ensayo" style="color:#ffffff">
+              <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menuensayos_us}}</span>
+              <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menuensayos_ar}}</span>
+              <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menuensayos_br}}</span>
+            </a> |
+            <a href="contacto" style="color:#ffffff">
+              <span ng-if="idiomaLocal =='en_US'">{{menuHeader.menucontactos_us}}</span>
+              <span ng-if="idiomaLocal =='es_AR'">{{menuHeader.menucontactos_ar}}</span>
+              <span ng-if="idiomaLocal =='es_BR'">{{menuHeader.menucontactos_br}}</span>
+            </a>
+          </p>
+        </div>
+        <div class="col-xs-12 col-lg-6 text-right">
+          <p ng-if="idiomaLocal =='en_US'" style="padding:45px 0 20px 20px">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_us}}</p>
+          <p ng-if="idiomaLocal =='es_AR'" style="padding:45px 0 20px 20px">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_ar}}</p>
+          <p ng-if="idiomaLocal =='es_BR'" style="padding:45px 0 20px 20px">{{menuHeader.spraytecltd}} | {{menuHeader.copyright_br}}</p>
+        </div>
+      </div>
+     
+    </div>
+  </div>
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
   <script>
 
@@ -145,7 +340,7 @@
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -168,12 +363,13 @@
   <script src="scripts/controllers/producto.js"></script>
   <script src="scripts/controllers/ensayos.js"></script>
   <script src="scripts/controllers/contacto.js"></script>
-  <script src="scripts/services/contenido.service.js"></script>  
+  <script src="scripts/controllers/detalle.js"></script>
+  <script src="scripts/services/contenido.service.js"></script>
   <script src="efectos/wow.js"></script>
-  <script src="efectos/scrolling/jquery.easing.1.3.js"></script>
-  <script src="efectos/scrolling/jquery.parallax-scroll.js"></script>
-  <script src="efectos/vendors.min.js"></script>
-  <script src="efectos/app.min.js"></script>
+  <!--<script src="efectos/scrolling/jquery.easing.1.3.js"></script>
+  <script src="efectos/scrolling/jquery.parallax-scroll.js"></script>-->
+  <!--<script src="efectos/vendors.min.js"></script>
+  <script src="efectos/app.min.js"></script>-->
 
   <!-- endbuild -->
 
